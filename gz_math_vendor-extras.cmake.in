@@ -9,12 +9,12 @@ get_target_property(components @LIB_NAME@@LIB_VER_MAJOR@::requested INTERFACE_LI
 
 foreach(component ${components})
   # Skip the core library
-  if (${component} STREQUAL @LIB_NAME@@LIB_VER_MAJOR@::@LIB_NAME@@LIB_VER_MAJOR@)
+  if(${component} STREQUAL @LIB_NAME@@LIB_VER_MAJOR@::@LIB_NAME@@LIB_VER_MAJOR@)
     continue()
   endif()
 
   # Skip the -all target
-  if (${component} STREQUAL @LIB_NAME@@LIB_VER_MAJOR@::@LIB_NAME@@LIB_VER_MAJOR@-all)
+  if(${component} STREQUAL @LIB_NAME@@LIB_VER_MAJOR@::@LIB_NAME@@LIB_VER_MAJOR@-all)
     continue()
   endif()
 
