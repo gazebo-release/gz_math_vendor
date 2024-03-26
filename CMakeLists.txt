@@ -66,4 +66,39 @@ if(NOT ${${LIB_NAME_FULL}_FOUND})
   ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.dsv.in")
 endif()
 
-ament_package(CONFIG_EXTRAS_POST "gz_math_vendor-extras.cmake.in")
+# The goal is to support versionless package names once the user has found the
+# vendor package. Example usage:
+#
+#   find_package(gz_sim_vendor)
+#   find_package(gz-sim VERSION 8.2.0) # Note gz-sim not gz-sim8
+#
+# To accomplish this, we create a `{LIB_NAME}-config.cmake` file that does
+# find_package on the underlying package and sets up CMake targets with the
+# same name as the original targets sans the version number in the target.
+#
+# However, since the vendor package is built with `GLOBAL_HOOK`, we can't
+# install the `-config.cmake` file we're creating here to where the versioned
+# `-config.cmake` from the underlying package is located. If we did, users can
+# `find_package` the versionless package without first finding the vendor
+# package. Thus, we install the `-config.cmake` file to a nonstandard
+# location: `opt/${PROJECT_NAME}/extra_cmake/` and provide a
+# `{vendor_name}-extras.cmake` file that adds that path to `CMAKE_PREFIX_PATH`.
+ament_package(
+  CONFIG_EXTRAS_POST "gz_math_vendor-extras.cmake.in"
+)
+
+include(CMakePackageConfigHelpers)
+include(GNUInstallDirs)
+
+configure_package_config_file(${LIB_NAME}-config.cmake.in
+  ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME}-config.cmake
+  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${LIB_NAME})
+
+write_basic_package_version_file(
+  ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME}-config-version.cmake
+  VERSION ${LIB_VER}
+  COMPATIBILITY SameMajorVersion)
+
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME}-config.cmake
+              ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME}-config-version.cmake
+        DESTINATION "opt/${PROJECT_NAME}/extra_cmake/lib/cmake/${LIB_NAME}")
