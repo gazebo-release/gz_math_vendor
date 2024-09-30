@@ -2,6 +2,13 @@
 Changelog for package gz_math_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Bump version to 8.0.0 (`#5 <https://github.com/gazebo-release/gz_math_vendor/issues/5>`_)
+* Apply prerelease suffix (`#4 <https://github.com/gazebo-release/gz_math_vendor/issues/4>`_)
+* Upgrade to Ionic
+* Contributors: Addisu Z. Taddese
+
 0.1.1 (2024-07-15)
 ------------------
 * Update vendored package version to 7.5.0
