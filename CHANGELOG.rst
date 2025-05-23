@@ -2,8 +2,8 @@
 Changelog for package gz_math_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.3.1 (2025-05-23)
+------------------
 * Bump version to 8.2.0 (`#11 <https://github.com/gazebo-release/gz_math_vendor/issues/11>`_)
 * Contributors: Ian Chen, Jose Luis Rivero
 
