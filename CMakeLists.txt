@@ -16,6 +16,17 @@ set(LIB_NAME_COMP_PREFIX ${LIB_NAME})
 set(LIB_NAME_FULL ${LIB_NAME})
 set(LIB_VER ${LIB_VER_MAJOR}.${LIB_VER_MINOR}.${LIB_VER_PATCH})
 
+OPTION(VENDOR_FROM_LIB_VCS_REF
+  "Vendor from a VCS ref instead of tag. Uses the value in LIB_VCS_REF if specified or main otherwise"
+  OFF)
+if(NOT VENDOR_FROM_LIB_VCS_REF)
+  set(LIB_VCS_VER ${GITHUB_NAME}${LIB_VER_MAJOR}_${LIB_VER}${LIB_VER_SUFFIX})
+elseif(LIB_VCS_REF)
+  set(LIB_VCS_VER ${LIB_VCS_REF})
+else()
+  set(LIB_VCS_VER main)
+endif()
+
 find_package(ament_cmake_core REQUIRED)
 find_package(ament_cmake_vendor_package REQUIRED)
 find_package(ament_cmake_export_dependencies REQUIRED)
@@ -41,7 +52,7 @@ find_package(${LIB_NAME_FULL} ${VERSION_MATCH} ${LIB_VER} COMPONENTS all QUIET)
 ament_vendor(${LIB_NAME_UNDERSCORE}_vendor
   SATISFIED ${${LIB_NAME_FULL}_FOUND}
   VCS_URL https://github.com/gazebosim/${GITHUB_NAME}.git
-  VCS_VERSION ${GITHUB_NAME}${LIB_VER_MAJOR}_${LIB_VER}${LIB_VER_SUFFIX}
+  VCS_VERSION ${LIB_VCS_VER}
   CMAKE_ARGS
     -DSKIP_PYBIND11:BOOL=ON
     -DSKIP_SWIG:BOOL=ON
