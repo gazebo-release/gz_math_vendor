@@ -54,7 +54,6 @@ ament_vendor(${LIB_NAME_UNDERSCORE}_vendor
   VCS_URL https://github.com/gazebosim/${GITHUB_NAME}.git
   VCS_VERSION ${LIB_VCS_VER}
   CMAKE_ARGS
-    -DSKIP_PYBIND11:BOOL=ON
     -DSKIP_SWIG:BOOL=ON
   GLOBAL_HOOK
 )
