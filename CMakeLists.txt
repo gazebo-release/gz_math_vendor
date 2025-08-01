@@ -16,7 +16,7 @@ set(LIB_NAME_COMP_PREFIX ${LIB_NAME})
 set(LIB_NAME_FULL ${LIB_NAME})
 set(LIB_VER ${LIB_VER_MAJOR}.${LIB_VER_MINOR}.${LIB_VER_PATCH})
 
-OPTION(VENDOR_FROM_LIB_VCS_REF
+option(VENDOR_FROM_LIB_VCS_REF
   "Vendor from a VCS ref instead of tag. Uses the value in LIB_VCS_REF if specified or main otherwise"
   OFF)
 if(NOT VENDOR_FROM_LIB_VCS_REF)
