@@ -6,14 +6,14 @@ project(gz_math_vendor)
 set(LIB_VER_MAJOR 9)
 set(LIB_VER_MINOR 0)
 set(LIB_VER_PATCH 0)
-set(LIB_VER_SUFFIX "")
+set(LIB_VER_SUFFIX "-pre1")
 
 # Derived variables
 set(LIB_NAME gz-math)
 set(GITHUB_NAME gz-math)
 string(REPLACE "-" "_" LIB_NAME_UNDERSCORE ${LIB_NAME})
 set(LIB_NAME_COMP_PREFIX ${LIB_NAME})
-set(LIB_NAME_FULL ${LIB_NAME})
+set(LIB_NAME_FULL gz-math)
 set(LIB_VER ${LIB_VER_MAJOR}.${LIB_VER_MINOR}.${LIB_VER_PATCH})
 
 option(VENDOR_FROM_LIB_VCS_REF
