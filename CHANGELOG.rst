@@ -2,8 +2,8 @@
 Changelog for package gz_math_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.2.5 (2025-09-04)
+------------------
 * Remove 0.3.0 from changelog
 * Contributors: Addisu Z. Taddese
 
