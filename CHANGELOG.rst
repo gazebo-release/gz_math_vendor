@@ -2,8 +2,8 @@
 Changelog for package gz_math_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.4.0 (2025-09-08)
+------------------
 * Jetty support: bump to 9.0.0, fix package names (`#12 <https://github.com/gazebo-release/gz_math_vendor/issues/12>`_)
   * Jetty support: bump to 9.0.0, fix package names
   Major version numbers have been removed from package
