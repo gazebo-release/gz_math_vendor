@@ -6,7 +6,7 @@ project(gz_math_vendor)
 set(LIB_VER_MAJOR 9)
 set(LIB_VER_MINOR 0)
 set(LIB_VER_PATCH 0)
-set(LIB_VER_SUFFIX "-pre1")
+set(LIB_VER_SUFFIX "-pre2")
 
 # Derived variables
 set(LIB_NAME gz-math)
