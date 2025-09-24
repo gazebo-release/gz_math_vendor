@@ -2,6 +2,11 @@
 Changelog for package gz_math_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.4.1 (2025-09-22)
+------------------
+* Bump to 9.0.0-pre2 (`#16 <https://github.com/gazebo-release/gz_math_vendor/issues/16>`_)
+* Contributors: Steve Peters
+
 0.4.0 (2025-09-08)
 ------------------
 * Jetty support: bump to 9.0.0, fix package names (`#12 <https://github.com/gazebo-release/gz_math_vendor/issues/12>`_)

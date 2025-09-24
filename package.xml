@@ -10,7 +10,7 @@
     To avoid any confusion with the version of the vendor package, the major
     version here will always be 0.
   -->
-  <version>0.4.0</version>
+  <version>0.4.1</version>
   <description>
     Vendor package for: gz-math 9.0.0
 
