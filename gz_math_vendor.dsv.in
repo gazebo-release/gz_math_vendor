@@ -1,5 +1,1 @@
 prepend-non-duplicate-if-exists;GZ_CONFIG_PATH;opt/@PROJECT_NAME@/share/gz
-{% # only set PYTHONPATH for unversioned packages (Jetty and newer) %}
-{% if not versioned_package_name %}
-prepend-non-duplicate-if-exists;PYTHONPATH;opt/@PROJECT_NAME@/lib/python
-{% endif %}
