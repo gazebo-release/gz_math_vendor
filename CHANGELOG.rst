@@ -2,6 +2,16 @@
 Changelog for package gz_math_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Bump version to 9.0.0 (`#17 <https://github.com/gazebo-release/gz_math_vendor/issues/17>`_)
+* Set PYTHONPATH for Jetty packages (`#14 <https://github.com/gazebo-release/gz_math_vendor/issues/14>`_)
+  * Set PYTHONPATH for unversioned packages
+  * Bump to 9.0.0-pre2
+  * Set PYTHONPATH in separate dsv file
+  ---------
+* Contributors: Addisu Z. Taddese, Steve Peters
+
 0.4.1 (2025-09-22)
 ------------------
 * Bump to 9.0.0-pre2 (`#16 <https://github.com/gazebo-release/gz_math_vendor/issues/16>`_)
