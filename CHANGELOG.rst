@@ -2,8 +2,8 @@
 Changelog for package gz_math_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.4.2 (2025-09-29)
+------------------
 * Bump version to 9.0.0 (`#17 <https://github.com/gazebo-release/gz_math_vendor/issues/17>`_)
 * Set PYTHONPATH for Jetty packages (`#14 <https://github.com/gazebo-release/gz_math_vendor/issues/14>`_)
   * Set PYTHONPATH for unversioned packages
