@@ -12,8 +12,10 @@ set(LIB_VER_SUFFIX "")
 set(LIB_NAME gz-math)
 set(GITHUB_NAME gz-math)
 string(REPLACE "-" "_" LIB_NAME_UNDERSCORE ${LIB_NAME})
+string(REPLACE "-" "." LIB_NAME_PYTHON ${LIB_NAME})
 set(LIB_NAME_COMP_PREFIX ${LIB_NAME})
 set(LIB_NAME_FULL ${LIB_NAME}${LIB_VER_MAJOR})
+string(REPLACE "-" "." LIB_NAME_FULL_PYTHON ${LIB_NAME_FULL})
 set(LIB_VER ${LIB_VER_MAJOR}.${LIB_VER_MINOR}.${LIB_VER_PATCH})
 
 find_package(ament_cmake_core REQUIRED)
@@ -110,3 +112,11 @@ write_basic_package_version_file(
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME}-config.cmake
               ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME}-config-version.cmake
         DESTINATION "opt/${PROJECT_NAME}/extra_cmake/lib/cmake/${LIB_NAME}")
+
+# Configure the Python shim file
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/unversioned_shim.py.in
+  ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME_PYTHON}.py
+  @ONLY)
+
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME_PYTHON}.py
+  DESTINATION "opt/${PROJECT_NAME}/lib/python")

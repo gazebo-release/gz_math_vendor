@@ -1,0 +1,14 @@
+"""
+Shim layer for @LIB_NAME_FULL_PYTHON@ module.
+Allows users to 'import @LIB_NAME_PYTHON@' instead of 'import @LIB_NAME_FULL_PYTHON@'.
+"""
+
+# Re-export everything from @LIB_NAME_FULL_PYTHON@
+from @LIB_NAME_FULL_PYTHON@ import *
+
+# Preserve the original module reference
+import @LIB_NAME_FULL_PYTHON@ as _@LIB_NAME_UNDERSCORE@@LIB_VER_MAJOR@
+import sys
+
+# Make this module behave exactly like @LIB_NAME_FULL_PYTHON@
+sys.modules[__name__].__dict__.update(_@LIB_NAME_UNDERSCORE@@LIB_VER_MAJOR@.__dict__)
