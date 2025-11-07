@@ -44,7 +44,6 @@ ament_vendor(${LIB_NAME_UNDERSCORE}_vendor
   VCS_VERSION ${GITHUB_NAME}${LIB_VER_MAJOR}_${LIB_VER}${LIB_VER_SUFFIX}
   CMAKE_ARGS
     -DBUILD_DOCS:BOOL=OFF
-    -DSKIP_PYBIND11:BOOL=ON
     -DSKIP_SWIG:BOOL=ON
   GLOBAL_HOOK
 )
@@ -71,6 +70,8 @@ if(NOT ${${LIB_NAME_FULL}_FOUND})
   # See https://github.com/ament/ament_package/issues/145
   file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.sh "# Dummy .sh file needed for .dsv file to be sourced.")
   ament_environment_hooks("${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.sh")
+  # Also add the pythonpath hook
+  ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}_pythonpath.dsv.in")
 endif()
 
 # The goal is to support versionless package names once the user has found the
