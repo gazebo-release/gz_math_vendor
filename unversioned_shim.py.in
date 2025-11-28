@@ -1,6 +1,6 @@
 """
 Shim layer for @LIB_NAME_FULL_PYTHON@ module.
-Allows users to 'import @LIB_NAME_PYTHON@' instead of 'import @LIB_NAME_FULL_PYTHON@'.
+Allows users to 'import @LIB_NAME_PYTHON_MODULE@' instead of 'import @LIB_NAME_FULL_PYTHON@'.
 """
 
 # Re-export everything from @LIB_NAME_FULL_PYTHON@
