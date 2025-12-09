@@ -118,7 +118,7 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME}-config.cmake
 # Configure and install the Python shim file
 set(PYTHON_INSTALL_DIR "opt/${PROJECT_NAME}/lib/python")
 if(LIB_NAME MATCHES "^gz-")
-  # gz-* libraries go under gz/ namespace. Note that could be others, like sdformat, not going here
+  # gz-* libraries go under gz/ namespace. Note that could be others (like sdformat) not going here
   string(APPEND PYTHON_INSTALL_DIR "/gz")
 endif()
 
