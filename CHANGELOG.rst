@@ -2,6 +2,11 @@
 Changelog for package gz_math_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Bump version to 8.2.1 (`#19 <https://github.com/gazebo-release/gz_math_vendor/issues/19>`_)
+* Contributors: Addisu Z. Taddese
+
 0.2.5 (2025-09-04)
 ------------------
 * Remove 0.3.0 from changelog
