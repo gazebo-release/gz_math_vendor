@@ -2,6 +2,11 @@
 Changelog for package gz_math_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Bump version to 7.6.0 (`#22 <https://github.com/gazebo-release/gz_math_vendor/issues/22>`_)
+* Contributors: Steve Peters
+
 0.0.8 (2025-02-05)
 ------------------
 * Bump version to 7.5.2 (`#9 <https://github.com/gazebo-release/gz_math_vendor/issues/9>`_)
