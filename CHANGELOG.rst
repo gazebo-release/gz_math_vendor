@@ -2,8 +2,8 @@
 Changelog for package gz_math_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.5.2 (2026-08-25)
+------------------
 * Upgrade to Rotary prerelease (`#25 <https://github.com/gazebo-release/gz_math_vendor/issues/25>`_)
 * Contributors: Addisu Z. Taddese
 
