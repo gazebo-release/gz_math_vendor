@@ -2,6 +2,11 @@
 Changelog for package gz_math_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Bump version to 8.4.0 (`#28 <https://github.com/gazebo-release/gz_math_vendor/issues/28>`_)
+* Contributors: Carlos Agüero
+
 0.2.7 (2026-04-22)
 ------------------
 * Bump version to 8.3.0 (`#21 <https://github.com/gazebo-release/gz_math_vendor/issues/21>`_)
