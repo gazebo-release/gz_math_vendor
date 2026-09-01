@@ -1,0 +1,1 @@
+prepend-non-duplicate-if-exists;PYTHONPATH;opt/@PROJECT_NAME@/lib/python
