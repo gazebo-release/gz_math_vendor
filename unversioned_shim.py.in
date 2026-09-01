@@ -1,0 +1,17 @@
+"""
+Shim layer for @LIB_NAME_FULL_PYTHON@ module.
+Allow users to import the module without the version number in the name
+"""
+
+import importlib
+import sys
+
+# Remove the incomplete placeholder module before importing the versioned module
+# so that internal checks (e.g. in gz.msgs11) do not detect a false version conflict.
+name = __name__
+sys.modules.pop(name, None)
+
+_mod = importlib.import_module("@LIB_NAME_FULL_PYTHON@")
+
+# Re-register this module name to point directly to the underlying module object
+sys.modules[name] = _mod
