@@ -12,11 +12,8 @@ set(LIB_VER_SUFFIX "")
 set(LIB_NAME gz-math)
 set(GITHUB_NAME gz-math)
 string(REPLACE "-" "_" LIB_NAME_UNDERSCORE ${LIB_NAME})
-# Also keep the module name for the shim file (gz.foo becomes just "foo")
-string(REGEX REPLACE "^gz-(.*)$" "\\1" LIB_NAME_PYTHON_MODULE ${LIB_NAME})
 set(LIB_NAME_COMP_PREFIX ${LIB_NAME})
 set(LIB_NAME_FULL gz-math7)
-string(REPLACE "-" "." LIB_NAME_FULL_PYTHON ${LIB_NAME_FULL})
 set(LIB_VER ${LIB_VER_MAJOR}.${LIB_VER_MINOR}.${LIB_VER_PATCH})
 
 option(VENDOR_FROM_LIB_VCS_REF
@@ -125,6 +122,9 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME}-config.cmake
               ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME}-config-version.cmake
         DESTINATION "opt/${PROJECT_NAME}/extra_cmake/lib/cmake/${LIB_NAME}")
 
+# Also keep the module name for the shim file (gz.foo becomes just "foo")
+string(REGEX REPLACE "^gz-(.*)$" "\\1" LIB_NAME_PYTHON_MODULE ${LIB_NAME})
+string(REPLACE "-" "." LIB_NAME_FULL_PYTHON ${LIB_NAME_FULL})
 
 # Configure and install the Python shim file
 set(PYTHON_INSTALL_DIR "opt/${PROJECT_NAME}/lib/python")
