@@ -55,7 +55,6 @@ ament_vendor(${LIB_NAME_UNDERSCORE}_vendor
   VCS_VERSION ${LIB_VCS_VER}
   CMAKE_ARGS
     -DBUILD_DOCS:BOOL=OFF
-    -DSKIP_PYBIND11:BOOL=ON
     -DSKIP_SWIG:BOOL=ON
   GLOBAL_HOOK
 )
@@ -83,6 +82,8 @@ if(NOT ${${LIB_NAME_FULL}_FOUND})
   file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.sh "# Dummy .sh file needed for .dsv file to be sourced.")
   ament_environment_hooks("${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.sh")
 endif()
+# environment hook for setting PYTHONPATH
+ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}_pythonpath.dsv.in")
 
 # The goal is to support versionless package names once the user has found the
 # vendor package. Example usage:
@@ -120,3 +121,20 @@ write_basic_package_version_file(
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME}-config.cmake
               ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME}-config-version.cmake
         DESTINATION "opt/${PROJECT_NAME}/extra_cmake/lib/cmake/${LIB_NAME}")
+
+# Also keep the module name for the shim file (gz.foo becomes just "foo")
+string(REGEX REPLACE "^gz-(.*)$" "\\1" LIB_NAME_PYTHON_MODULE ${LIB_NAME})
+string(REPLACE "-" "." LIB_NAME_FULL_PYTHON ${LIB_NAME_FULL})
+
+# Configure and install the Python shim file
+set(PYTHON_INSTALL_DIR "opt/${PROJECT_NAME}/lib/python")
+if(LIB_NAME MATCHES "^gz-")
+  # gz-* libraries go under gz/ namespace. Note that could be others (like sdformat) not going here
+  string(APPEND PYTHON_INSTALL_DIR "/gz")
+endif()
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/unversioned_shim.py.in
+  ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME_PYTHON_MODULE}.py
+  @ONLY)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME_PYTHON_MODULE}.py
+  DESTINATION "${PYTHON_INSTALL_DIR}")
