@@ -2,8 +2,8 @@
 Changelog for package gz_math_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.11 (2026-09-03)
+-------------------
 * Enable Python bindings (`#31 <https://github.com/gazebo-release/gz_math_vendor/issues/31>`_)
   * Enable Python bindings
   * Rerun gz_vendor
