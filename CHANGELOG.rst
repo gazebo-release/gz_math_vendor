@@ -2,6 +2,14 @@
 Changelog for package gz_math_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Enable Python bindings (`#31 <https://github.com/gazebo-release/gz_math_vendor/issues/31>`_)
+  * Enable Python bindings
+  * Rerun gz_vendor
+  ---------
+* Contributors: Addisu Z. Taddese
+
 0.0.10 (2026-08-27)
 -------------------
 * Bump version to 7.7.0 (`#29 <https://github.com/gazebo-release/gz_math_vendor/issues/29>`_)
