@@ -6,7 +6,7 @@ project(gz_math_vendor)
 set(LIB_VER_MAJOR 10)
 set(LIB_VER_MINOR 0)
 set(LIB_VER_PATCH 0)
-set(LIB_VER_SUFFIX "-pre1")
+set(LIB_VER_SUFFIX "-pre2")
 
 # Derived variables
 set(LIB_NAME gz-math)
@@ -80,8 +80,8 @@ if(NOT ${${LIB_NAME_FULL}_FOUND})
   # See https://github.com/ament/ament_package/issues/145
   file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.sh "# Dummy .sh file needed for .dsv file to be sourced.")
   ament_environment_hooks("${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.sh")
-  # environment hook for setting PYTHONPATH
-  ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}_pythonpath.dsv.in")
 endif()
+# environment hook for setting PYTHONPATH
+ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}_pythonpath.dsv.in")
 
 ament_package()
