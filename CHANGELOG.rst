@@ -2,8 +2,8 @@
 Changelog for package gz_math_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.5.3 (2026-10-06)
+------------------
 * Bump version to 10.0.0~pre2 (`#33 <https://github.com/gazebo-release/gz_math_vendor/issues/33>`_)
 * Contributors: Addisu Z. Taddese
 
