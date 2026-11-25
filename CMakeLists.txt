@@ -4,7 +4,7 @@ project(gz_math_vendor)
 
 # Project-specific settings
 set(LIB_VER_MAJOR 8)
-set(LIB_VER_MINOR 4)
+set(LIB_VER_MINOR 5)
 set(LIB_VER_PATCH 0)
 set(LIB_VER_SUFFIX "")
 
@@ -12,11 +12,8 @@ set(LIB_VER_SUFFIX "")
 set(LIB_NAME gz-math)
 set(GITHUB_NAME gz-math)
 string(REPLACE "-" "_" LIB_NAME_UNDERSCORE ${LIB_NAME})
-# Also keep the module name for the shim file (gz.foo becomes just "foo")
-string(REGEX REPLACE "^gz-(.*)$" "\\1" LIB_NAME_PYTHON_MODULE ${LIB_NAME})
 set(LIB_NAME_COMP_PREFIX ${LIB_NAME})
 set(LIB_NAME_FULL gz-math8)
-string(REPLACE "-" "." LIB_NAME_FULL_PYTHON ${LIB_NAME_FULL})
 set(LIB_VER ${LIB_VER_MAJOR}.${LIB_VER_MINOR}.${LIB_VER_PATCH})
 
 option(VENDOR_FROM_LIB_VCS_REF
@@ -77,15 +74,13 @@ ament_export_dependencies(
   gz_utils_vendor
 )
 
-if(NOT ${${LIB_NAME_FULL}_FOUND})
+if(FORCE_BUILD_VENDOR_PKG OR AMENT_VENDOR_POLICY STREQUAL "FORCE_BUILD_VENDOR" OR NOT ${${LIB_NAME_FULL}_FOUND})
   ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.dsv.in")
-  # Create a dummy .sh file needed for ament_package to source the .dsv file.
-  # See https://github.com/ament/ament_package/issues/145
-  file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.sh "# Dummy .sh file needed for .dsv file to be sourced.")
-  ament_environment_hooks("${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.sh")
+  ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.sh.in")
 endif()
 # environment hook for setting PYTHONPATH
 ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}_pythonpath.dsv.in")
+ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}_pythonpath.sh.in")
 
 # The goal is to support versionless package names once the user has found the
 # vendor package. Example usage:
@@ -124,6 +119,9 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME}-config.cmake
               ${CMAKE_CURRENT_BINARY_DIR}/${LIB_NAME}-config-version.cmake
         DESTINATION "opt/${PROJECT_NAME}/extra_cmake/lib/cmake/${LIB_NAME}")
 
+# Also keep the module name for the shim file (gz.foo becomes just "foo")
+string(REGEX REPLACE "^gz-(.*)$" "\\1" LIB_NAME_PYTHON_MODULE ${LIB_NAME})
+string(REPLACE "-" "." LIB_NAME_FULL_PYTHON ${LIB_NAME_FULL})
 
 # Configure and install the Python shim file
 set(PYTHON_INSTALL_DIR "opt/${PROJECT_NAME}/lib/python")
